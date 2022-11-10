@@ -1,0 +1,17 @@
+.row{
+    display: flex;
+}
+.cell {
+    position: absolute;
+    background: grey;
+    height: 50px;
+    width: 50px;
+    margin: 4px;
+    text-align: center;
+    color: #766e65;
+    font-size: 43px;
+    border-radius: 8px;
+}
+.app {
+    background: #baad9f;
+} 
