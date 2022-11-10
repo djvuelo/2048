@@ -19,7 +19,7 @@ function createCell(i, j, value){
         value: null,
         domNode: null,
         cellMovement: null,
-        speed: 20,
+        speed: 10,
         widthHeight: 60,
         toRemove: false,
         animationStop: true,
@@ -130,7 +130,7 @@ const game2048 = {
                             grid[i][k].remove();
                             grid[i][k+1].remove();
                             grid[i][k] = createCell(i, k, grid[i][k].value + grid[i][k + 1].value);
-                            k+=2;
+                            k++;
                             pluses = true;
                             movement = true;
                         }
@@ -169,7 +169,7 @@ const game2048 = {
                             grid[i][k].remove();
                             grid[i][k-1].remove();
                             grid[i][k] = createCell(i, k, grid[i][k].value + grid[i][k - 1].value);
-                            k-=2;
+                            k--;
                             pluses = true;
                             movement = true;
                         }
@@ -206,14 +206,12 @@ const game2048 = {
         if (withAdd)
         for (let i=0; i < this.generalCells; i++){
             for (let j=this.generalCells -1; j > 0; j--){
-                console.log(j-1);
-
                 if (grid[j-1][i] !== undefined){
                     if (grid[j][i].value === grid[j-1][i].value) {
                         grid[j][i].remove();
                         grid[j-1][i].remove();
                         grid[j][i] = createCell(j, i, grid[j][i].value + grid[j-1][i].value);
-                        j-=2;
+                        j--;
                         pluses = true;
                         movement = true;
                     }
@@ -233,7 +231,6 @@ const game2048 = {
         for (let i=0; i < this.generalCells; i++){
             let counter = 0;
             for (let j=0; j < this.generalCells; j++){
-                console.log(j);
                 if (this.grid[j][i] !== undefined){
                     if (!this.grid[j][i].toRemove){
                         if (this.grid[j][i].indexes.i !== counter){
@@ -250,14 +247,12 @@ const game2048 = {
         if (withAdd)
         for (let i=0; i < this.generalCells; i++){
             for (let j=0; j < this.generalCells -1; j++){
-                //console.log(j+1);
-
                 if (grid[j+1][i] !== undefined){
                     if (grid[j][i].value === grid[j+1][i].value) {
                         grid[j][i].remove();
                         grid[j+1][i].remove();
                         grid[j][i] = createCell(j, i, grid[j][i].value + grid[j+1][i].value);
-                        j+=2;
+                        j++;
                         pluses = true;
                         movement = true;
                     }
@@ -300,7 +295,6 @@ onload = () => {
         if (event.key === "ArrowRight") newGame2048.right(true);
         if (event.key === "ArrowDown") newGame2048.bottom(true);
         if (event.key === "ArrowUp") newGame2048.top(true);
-        console.log(event.key);
     }
 }
 
